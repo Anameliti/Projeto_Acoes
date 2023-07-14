@@ -1,0 +1,36 @@
+ATIVOS - Yahoo Finance 
+Petrobras ("PETR4")
+Vale S.A ("VALE")
+JBS ("JBSS3")
+Shell ("SHEL") 
+Odebrecht ("capital fechado") 
+Siemens ("ENR1N")
+Walmart ("WALM34")
+Glencore ("GLEN")
+
+#importando a biblioteca Yahoo Finance
+
+import yfinance as yf 
+from datetime import datetime
+import pandas as pd
+
+vale = yf.Ticker("VALE") #puxando a informação dos ativos (Vale, Shell, Petro, JBS, Odebrecht , Siemens, Walmart ,Glencore)
+vale.info
+
+end_date = datetime.now().strftime('%Y-%m-%d')
+data_vale = yf.download("VALE", start='2020-01-01', end=end_date)
+data_vale.to_csv('Cotacoes_vale')
+
+#Sintaxe puxando a data do estouro de barragem de Brumadinho até os dias atuais. 
+
+end_date = datetime.now().strftime('%Y-%m-%d')
+data_vale = yf.download("VALE", start='2015-11-15', end=end_date)
+data_vale
+
+#Sintaxe plotando os anos de abertura na Bolsa
+
+end_date = datetime.now().strftime('%Y-%m-%d')
+data_vale = yf.download("VALE", start='2014-11-15', end=end_date)
+data_vale['Open'].plot()
+
+
